@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Happy Birthday Srijita</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            fun: ['"Comic Neue"', 'cursive'],
+          },
+          keyframes: {
+            pulseGlow: {
+              '0%, 100%': { textShadow: '0 0 10px #ff69b4, 0 0 20px #ff69b4' },
+              '50%': { textShadow: '0 0 20px #ff1493, 0 0 30px #ff1493' },
+            },
+            wave: {
+              '0%': { backgroundPosition: '0% 50%' },
+              '50%': { backgroundPosition: '100% 50%' },
+              '100%': { backgroundPosition: '0% 50%' },
+            }
+          },
+          animation: {
+            pulseGlow: 'pulseGlow 3s ease-in-out infinite',
+            wave: 'wave 10s ease infinite',
+          },
+          backgroundImage: {
+            'animated-gradient': 'linear-gradient(270deg, #1e1e2f, #3a3a5d, #2a2a44)',
+          }
+        }
+      }
+    }
+  </script>
+</head>
+
+<body class="min-h-screen flex items-center justify-center p-6 font-fun text-white bg-animated-gradient bg-[length:200%_200%] animate-wave">
+
+  <!-- 🎁 Main Content Card -->
+  <div class="bg-white bg-opacity-10 backdrop-blur-md p-6 rounded-xl shadow-2xl text-center space-y-6 max-w-md w-full border border-white/10">
+    
+    <!-- 🌟 Glowing Elegant Heading -->
+    <h1 class="text-4xl md:text-5xl font-extrabold animate-pulseGlow">
+      Happy Birthday, Srijita
+    </h1>
+
+    <p class="text-base text-gray-200 leading-relaxed">
+      Here's something special made just for you. <br />
+      Explore each surprise below ✨
+    </p>
+
+    <!-- ✨ Navigation Buttons -->
+    <div class="space-y-4">
+      <a href="spin.html" class="block px-6 py-3 bg-pink-600 hover:bg-pink-700 text-white rounded-xl shadow-lg text-lg transition duration-300 hover:shadow-pink-500/50">
+        Spin the Cake 🎂
+      </a>
+      <a href="music.html" class="block px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white rounded-xl shadow-lg text-lg transition duration-300 hover:shadow-blue-500/50">
+        Birthday Music Room 🎧
+      </a>
+      <a href="memories.html" class="block px-6 py-3 bg-indigo-600 hover:bg-indigo-700 text-white rounded-xl shadow-lg text-lg transition duration-300 hover:shadow-indigo-500/50">
+        Memory Wall 🖼️
+      </a>
+      <a href="card.html" class="block px-6 py-3 bg-purple-600 hover:bg-purple-700 text-white rounded-xl shadow-lg text-lg transition duration-300 hover:shadow-purple-500/50">
+        Digital Card 💌
+      </a>
+    </div>
+  </div>
+  <script src="script.js"></script>
+</body>
+</html>

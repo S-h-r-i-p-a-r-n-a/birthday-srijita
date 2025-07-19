@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Spin the Cake 🎂</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    body {
+      background: radial-gradient(#1a1a2e, #0f0c29);
+      font-family: 'Comic Neue', cursive;
+    }
+
+    .wheel {
+      width: 300px;
+      height: 300px;
+      border-radius: 50%;
+      border: 10px solid #fff;
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
+    }
+
+    .wheel .slice {
+      position: absolute;
+      width: 50%;
+      height: 50%;
+      transform-origin: 100% 100%;
+      background: var(--color);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 0.6rem;
+      font-weight: bold;
+      text-align: center;
+      padding: 4px;
+      writing-mode: vertical-rl;
+      text-orientation: upright;
+    }
+
+    .arrow {
+      width: 0;
+      height: 0;
+      border-left: 15px solid transparent;
+      border-right: 15px solid transparent;
+      border-bottom: 25px solid #fff;
+      margin-bottom: 10px;
+    }
+
+    .modal-enter {
+      animation: modalFadeIn 0.5s ease forwards;
+    }
+
+    @keyframes modalFadeIn {
+      0% { transform: translateY(30px); opacity: 0; }
+      100% { transform: translateY(0); opacity: 1; }
+    }
+
+    .cake {
+      position: relative;
+      width: 120px;
+      height: 120px;
+      margin-top: 20px;
+    }
+
+    .plate {
+      width: 140px;
+      height: 20px;
+      background: #eee;
+      border-radius: 50%;
+      position: absolute;
+      bottom: 0;
+      left: -10px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+    }
+
+    .layer {
+      width: 100%;
+      height: 30px;
+      position: absolute;
+      left: 0;
+      border-radius: 10px;
+    }
+
+    .layer-bottom { background: #ff7675; bottom: 20px; }
+    .layer-middle { background: #fab1a0; bottom: 50px; }
+    .layer-top    { background: #ffeaa7; bottom: 80px; }
+
+    .candle {
+      width: 10px;
+      height: 30px;
+      background: #333;
+      position: absolute;
+      top: -20px;
+      left: 55px;
+      border-radius: 2px;
+    }
+
+    .flame {
+      width: 10px;
+      height: 10px;
+      background: orange;
+      border-radius: 50%;
+      position: absolute;
+      top: -10px;
+      left: 0;
+      animation: flicker 0.3s infinite alternate;
+    }
+
+    @keyframes flicker {
+      0%   { transform: scale(1); opacity: 1; }
+      100% { transform: scale(1.2); opacity: 0.7; }
+    }
+  </style>
+</head>
+<body class="min-h-screen flex flex-col items-center justify-center text-white px-4 relative">
+
+  <!-- Pointer -->
+  <div class="arrow"></div>
+
+  <!-- 🎡 Spinner -->
+  <div id="wheel" class="wheel transition-transform duration-[4s] ease-out">
+    <div class="slice" style="--color: #ff7675; transform: rotate(0deg) skewY(-60deg);">🍫 Choco Gift</div>
+    <div class="slice" style="--color: #74b9ff; transform: rotate(60deg) skewY(-60deg);">🎂 3D Cake</div>
+    <div class="slice" style="--color: #55efc4; transform: rotate(120deg) skewY(-60deg);">🪞 Mirror</div>
+    <div class="slice" style="--color: #ffeaa7; transform: rotate(180deg) skewY(-60deg); color: black;">📦 Mystery</div>
+    <div class="slice" style="--color: #a29bfe; transform: rotate(240deg) skewY(-60deg);">📖 Story</div>
+    <div class="slice" style="--color: #fab1a0; transform: rotate(300deg) skewY(-60deg);">📸 Photo</div>
+  </div>
+
+  <!-- 🔘 Spin Button -->
+  <button id="spinBtn" onclick="spinWheel()" class="mt-6 px-6 py-3 bg-pink-600 hover:bg-pink-700 rounded-full text-lg font-bold shadow-lg">
+    Spin the Cake 🎂
+  </button>
+
+  <!-- 💬 Result -->
+  <div id="result" class="mt-6 text-center font-semibold text-lg"></div>
+
+  <!-- 🎁 Modal -->
+  <div id="giftModal" class="hidden fixed inset-0 z-50 bg-black bg-opacity-70 flex items-center justify-center">
+    <div class="bg-white text-black rounded-2xl p-6 max-w-md w-full mx-4 modal-enter shadow-2xl relative">
+      <h2 id="giftTitle" class="text-2xl font-bold text-center mb-4"></h2>
+      <p id="giftContent" class="text-lg text-center"></p>
+      <button onclick="closeModal()" class="mt-6 bg-pink-600 hover:bg-pink-700 text-white px-5 py-2 rounded-full block mx-auto">Close Gift 🎀</button>
+    </div>
+  </div>
+
+  <!-- 🎂 Cake -->
+  <div id="cakeContainer" class="hidden flex flex-col items-center justify-center mt-8">
+    <div class="cake">
+      <div class="plate"></div>
+      <div class="layer layer-bottom"></div>
+      <div class="layer layer-middle"></div>
+      <div class="layer layer-top"></div>
+      <div class="candle">
+        <div class="flame"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 🔗 Navigation -->
+  <div id="afterGiftNav" class="hidden fixed bottom-4 inset-x-0 flex flex-wrap justify-center gap-2 px-4 z-40">
+    <a href="index.html" class="bg-purple-700 hover:bg-purple-800 text-white px-4 py-2 rounded-full text-sm shadow-lg transition-all">🏠 Home</a>
+    <a href="music.html" class="bg-pink-600 hover:bg-pink-700 text-white px-4 py-2 rounded-full text-sm shadow-lg transition-all">🎵 Music Room</a>
+    <a href="memories.html" class="bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded-full text-sm shadow-lg transition-all">📷 Memories</a>
+    <a href="card.html" class="bg-yellow-600 hover:bg-yellow-700 text-black px-4 py-2 rounded-full text-sm shadow-lg transition-all">💌 Card</a>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Birthday Music Room 🎶</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    body {
+      background: linear-gradient(to right, #0f2027, #203a43, #2c5364);
+      font-family: 'Comic Neue', cursive;
+    }
+
+    .track {
+      transition: transform 0.3s ease;
+    }
+
+    .track:hover {
+      transform: scale(1.05);
+    }
+
+    .sound-btn:hover {
+      transform: scale(1.05);
+    }
+
+    .pulse {
+      animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+      0% { transform: scale(1); opacity: 1; }
+      50% { transform: scale(1.1); opacity: 0.8; }
+      100% { transform: scale(1); opacity: 1; }
+    }
+  </style>
+</head>
+<body class="min-h-screen text-white px-4 pt-10 flex flex-col items-center justify-start space-y-8">
+
+  <h1 class="text-3xl sm:text-4xl font-bold text-center text-pink-400 pulse">🎵 Birthday Music Room 🎉</h1>
+  <p class="text-center max-w-md text-sm sm:text-base text-gray-300">Here's a little room filled with sounds and songs to make your day more magical ✨</p>
+
+  <!-- 🎶 Birthday Playlist -->
+  <div class="w-full max-w-xl grid grid-cols-1 sm:grid-cols-2 gap-4">
+    <div class="track bg-pink-600 hover:bg-pink-700 p-4 rounded-xl shadow-md">
+      <p class="font-semibold mb-2">🎂 Happy Birthday Song</p>
+      <audio controls class="w-full rounded-lg">
+        <source src="assets/audio/happy-birthday-254480.mp3" />
+        Your browser does not support the audio element.
+      </audio>
+    </div>
+
+    <div class="track bg-purple-600 hover:bg-purple-700 p-4 rounded-xl shadow-md">
+      <p class="font-semibold mb-2">💃 Birthday Beats</p>
+      <audio controls class="w-full rounded-lg">
+        <source src="assets/audio/happy-birthday-funk-full-373162.mp3" type="audio/mp3" />
+        Your browser does not support the audio element.
+      </audio>
+    </div>
+
+    <div class="track bg-yellow-500 hover:bg-yellow-600 p-4 rounded-xl shadow-md text-black">
+      <p class="font-semibold mb-2">🎈 Birthday Pop!</p>
+      <audio controls class="w-full rounded-lg">
+        <source src="assets/audio/funny-hiphop-party-notification-music-sound-334710.mp3" type="audio/mp3" />
+        Your browser does not support the audio element.
+      </audio>
+    </div>
+
+    <div class="track bg-blue-500 hover:bg-blue-600 p-4 rounded-xl shadow-md">
+      <p class="font-semibold mb-2">🌟 Special Tune</p>
+      <audio controls class="w-full rounded-lg">
+        <source src="assets/audio/my-life-main-6670.mp3" type="audio/mp3" />
+        Your browser does not support the audio element.
+      </audio>
+    </div>
+  </div>
+
+  <!-- 🔊 Surprise Sounds -->
+  <div class="mt-10 flex flex-wrap justify-center gap-4">
+    <button onclick="playSound('clap')" class="sound-btn bg-green-500 hover:bg-green-600 text-white px-4 py-2 rounded-full shadow-md">👏 Clap</button>
+    <button onclick="playSound('yay')" class="sound-btn bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded-full shadow-md">🎊 Yay!</button>
+    <button onclick="playSound('wish')" class="sound-btn bg-indigo-500 hover:bg-indigo-600 text-white px-4 py-2 rounded-full shadow-md">💌 Birthday Wish</button>
+  </div>
+
+  <!-- 🔗 Navigation -->
+  <div class="mt-10 flex flex-wrap justify-center gap-3">
+    <a href="index.html" class="bg-purple-700 hover:bg-purple-800 text-white px-4 py-2 rounded-full text-sm shadow-lg transition-all">🏠 Home</a>
+    <a href="spin.html" class="bg-pink-600 hover:bg-pink-700 text-white px-4 py-2 rounded-full text-sm shadow-lg transition-all">🎂 Spin Cake</a>
+    <a href="memories.html" class="bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded-full text-sm shadow-lg transition-all">📷 Memories</a>
+    <a href="card.html" class="bg-yellow-500 hover:bg-yellow-600 text-black px-4 py-2 rounded-full text-sm shadow-lg transition-all">💌 Card</a>
+  </div>
+
+  <!-- 🎧 Surprise Sound Files -->
+  <audio id="sound-clap" src="sound/solo-clap-90129.mp3"></audio>
+  <audio id="sound-yay" src="sound/funny-yay-6273.mp3"></audio>
+  <audio id="sound-wish" src="sound/happybirthday1-101295.mp3"></audio>
+
+  <!-- 🧠 Script -->
+  <script src="script.js"></script>
+</body>
+</html>
