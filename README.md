@@ -52,11 +52,26 @@ Enjoy the birthday surprise 🎉
 
 ---
 
-birthday-site/
- ┣ 📜 index.html   # Main page
- ┣ 📜 style.css    # Styling & design
- ┣ 📜 script.js    # Animations & interactions
- ┗ 📂 assets       # Images, music, fonts
+📦 birthday-site
+ 
+ ┣ 📂 assets          # Images, decorations, etc.
+ 
+ ┣ 📂 sound           # Background music & audio files
+ 
+ ┣ 📜 index.html      # Main homepage
+ 
+ ┣ 📜 card.html       # Birthday card page
+ 
+ ┣ 📜 memories.html   # Memories & photos page
+ 
+ ┣ 📜 music.html      # Music player page
+ 
+ ┣ 📜 spin.html       # Fun spin surprise page
+ 
+ ┣ 📜 script.js       # JavaScript for interactivity
+ 
+ ┗ 📜 README.md       # Project documentation
+
 
 ---
 
