@@ -52,7 +52,7 @@ Enjoy the birthday surprise 🎉
 
 ---
 
-📦 birthday-site
+📦 birthday-srijita
  
  ┣ 📂 assets          # Images, decorations, etc.
  
